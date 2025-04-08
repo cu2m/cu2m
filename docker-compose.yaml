@@ -18,7 +18,7 @@ services:
     develop:
       watch:
         - action: sync+restart
-          path: ./flaskr
+          path: ./cu2m-backend/flaskr
           target: /app/flaskr
           ignore:
             - __pycache__/
