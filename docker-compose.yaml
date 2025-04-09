@@ -27,6 +27,7 @@ services:
   cu2m-frontend:
     build:
       context: ./cu2m-frontend
+      dockerfile: Dockerfile
     develop:
       watch:
         - action: sync
