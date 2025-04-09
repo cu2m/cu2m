@@ -27,11 +27,7 @@ services:
   cu2m-frontend:
     build:
       context: ./cu2m-frontend
-    develop:
-      watch:
-        - action: sync
-          path: ./cu2m-frontend/src
-          target: /app/src
+      dockerfile: Dockerfile.prod
   nginx:
     build:
       context: ./nginx
