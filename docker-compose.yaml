@@ -1,43 +1,71 @@
 services:
   mongodb:
+    profiles:
+      - dev
+      - prod
     image: mongo
     environment:
       - MONGO_INITDB_ROOT_USERNAME=tmp
       - MONGO_INITDB_ROOT_PASSWORD=tmp
-    ports:
-      - 27017:27017
     volumes:
       - './cu2m-backend/database/data:/data/db'
     command: --quiet
-  cu2m-backend:
+  cu2m-backend-dev:
+    profiles:
+      - dev
     build:
       context: ./cu2m-backend/
+      dockerfile: Dockerfile
     environment:
+      - COURSE_DATA_FILENAME=courses.json
       - MONGO_DB_HOST=mongodb
       - MONGO_DB_PORT=27017
+      - LOGGING_LEVEL=DEBUG
+    volumes:
+      - './cu2m-backend/flaskr:/app/flaskr'
     develop:
       watch:
-        - action: sync+restart
-          path: ./cu2m-backend/flaskr
-          target: /app/flaskr
-          ignore:
-            - __pycache__/
         - action: rebuild
-          path: requirements.txt
-  cu2m-frontend:
+          path: pyproject.toml
+  cu2m-backend:
+    profiles:
+      - prod
+    build:
+      context: ./cu2m-backend/
+      dockerfile: Dockerfile.prod
+    environment:
+      - COURSE_DATA_FILENAME=courses.json
+      - MONGO_DB_HOST=mongodb
+      - MONGO_DB_PORT=27017
+      - LOGGING_LEVEL=INFO
+  cu2m-frontend-dev:
+    profiles:
+      - dev
     build:
       context: ./cu2m-frontend
       dockerfile: Dockerfile
-    develop:
-      watch:
-        - action: sync
-          path: ./cu2m-frontend/src
-          target: /app/src
+    volumes:
+      - ./cu2m-frontend/:/app/
+  cu2m-frontend:
+    profiles:
+      - prod
+    build:
+      context: ./cu2m-frontend
+      dockerfile: Dockerfile.prod
+  nginx-dev:
+    profiles:
+      - dev
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
   nginx:
+    profiles:
+      - prod
     build:
       context: ./nginx
       dockerfile: Dockerfile
     container_name: nginx
     ports:
       - "80:80"
-
