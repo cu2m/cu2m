@@ -47,6 +47,10 @@ services:
     volumes:
       - /app/node_modules/
       - ./cu2m-frontend/:/app/
+    develop:
+      watch:
+        - action: rebuild
+          path: package.json
   cu2m-frontend:
     profiles:
       - prod
