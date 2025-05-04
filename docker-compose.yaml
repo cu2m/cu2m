@@ -45,6 +45,7 @@ services:
       context: ./cu2m-frontend
       dockerfile: Dockerfile
     volumes:
+      - /app/node_modules/
       - ./cu2m-frontend/:/app/
   cu2m-frontend:
     profiles:
