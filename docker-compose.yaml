@@ -10,6 +10,8 @@ services:
     volumes:
       - './cu2m-backend/database/data:/data/db'
     command: --quiet
+    ports:
+      - 27017:27017
   cu2m-backend-dev:
     profiles:
       - dev
