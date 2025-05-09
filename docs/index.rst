@@ -1,17 +1,11 @@
-.. cu^2m documentation master file, created by
-   sphinx-quickstart on Fri May  9 17:36:44 2025.
+.. CU^2M documentation master file, created by
+   sphinx-quickstart on Wed May  7 02:55:56 2025.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-cu^2m documentation
+CU^2M documentation
 ===================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
+.. test-report:: BACKEND TEST REPORT
+   :file: ../backend.xml
+   :id: BACKEND

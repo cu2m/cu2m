@@ -6,22 +6,36 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'cu^2m'
-copyright = '2025, TEAM 11'
-author = 'TEAM 11'
+import os
+import sys
+
+sys.path.insert(0, os.path.abspath(".."))
+sys.path.insert(0, os.path.abspath("../tests"))
+
+
+project = "CU^2M"
+copyright = "2025, TEAM A11"
+author = "TEAM A11"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = []
+extensions = [
+    "sphinx_needs",
+    "sphinxcontrib.test_reports",
+    "sphinxcontrib.plantuml",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.viewcode",
+]
 
-templates_path = ['_templates']
+templates_path = ["_templates"]
 exclude_patterns = []
-
 
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'alabaster'
-html_static_path = ['_static']
+html_theme = "alabaster"
+html_static_path = ["_static"]
+
+tr_report_template = "_templates/report.rst"

@@ -9,7 +9,9 @@ readme = "README.md"
 requires-python = ">=3.12,<4"
 dependencies = [
     "sphinx-test-reports (>=1.2.0,<2.0.0)",
-    "sphinxcontrib-plantuml (>=0.30,<0.31)"
+    "sphinxcontrib-plantuml (>=0.30,<0.31)",
+    "sphinx-needs (>=5.1.0,<6.0.0)",
+    "sphinx (==7.2)"
 ]
 
 
