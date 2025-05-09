@@ -8,6 +8,7 @@
 
 import os
 import sys
+from typing import Any
 
 sys.path.insert(0, os.path.abspath(".."))
 sys.path.insert(0, os.path.abspath("../tests"))
@@ -39,3 +40,23 @@ html_theme = "alabaster"
 html_static_path = ["_static"]
 
 tr_report_template = "_templates/report.rst"
+
+exclude_tags = ["file", "style"]
+
+needs_layouts: dict[str, Any] = {
+    "custom_layout": {
+        "grid": "simple",
+        "layout": {
+            "head": [
+                '<<meta("type_name")>>: **<<meta("title")>>** <<meta_id()>>  <<collapse_button("meta", collapsed="icon:arrow-down-circle", visible="icon:arrow-right-circle", initial=False)>>'
+            ],
+            "meta": [
+                f"<<meta_all(prefix='**', postfix='**', exclude={exclude_tags}, no_links=True)>>",
+                f"<<meta_links_all(prefix='**', postfix='**', exclude=None)>>",
+            ],
+        },
+    }
+}
+
+
+needs_default_layout = "custom_layout"

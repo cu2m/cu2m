@@ -1,9 +1,21 @@
+=====================================================================
+{title}
+=====================================================================
+
 **Statistics**
 
 | Test suites: :need_count:`'{id}' in tags and type=='{suite_need}'`
 | Test cases: :need_count:`'{id}' in tags and type=='{case_need}'`
 | Failed test cases: :need_count:`'{id}' in tags and 'failure' == result and type=='{case_need}'`
 | Skipped test cases: :need_count:`'{id}' in tags and 'skipped' == result and type=='{case_need}'`
+
+**Passed test cases**:
+
+.. needtable::
+   :filter: '{id}' in tags and 'passed' == result
+   :columns: id, title, result
+   :style_row: tr_[[copy('result')]]
+
 
 **Failed test cases**:
 
@@ -19,8 +31,7 @@
    :columns: id, title, result
    :style_row: tr_[[copy('result')]]
 
-**Imported data**
-
+.. .. test-results:: {file}
 
 .. {file_type}:: {title}
    :id: {id}{links_string}
@@ -28,5 +39,4 @@
    :file: {file}
    :auto_suites:
    :auto_cases:
-
-   {content}
+   :collapse: FALSE

@@ -25,21 +25,27 @@ ENV_VARS = copy.deepcopy(os.environ)
 ENV_VARS.pop("VIRTUAL_ENV", None)
 
 
+def execute(command: list[str], cwd: Path | None = None):
+    """
+    Execute a command in the shell.
+    """
+
+    call(command, shell=True, cwd=cwd, env=ENV_VARS)
+
+
 def run_backend_tests():
     """
     Run the backend tests using pytest.
     """
 
-    call(
+    execute(
         [
             "poetry",
             "run",
             "pytest",
             f"--junit-xml={BACKEND_RESULT}",
         ],
-        shell=True,
         cwd=BACKEND_PATH,
-        env=ENV_VARS,
     )
 
 
@@ -56,17 +62,14 @@ def generate_latex_report():
     Generate a LaTeX report from the XML files.
     """
 
-    call(
+    execute(
         [
             "sphinx-build",
             "-M",
             "latex",
             str(DOC_DIR),
             str(BUILD_DIR),
-        ],
-        shell=True,
-        cwd=BACKEND_PATH,
-        env=ENV_VARS,
+        ]
     )
 
 
@@ -75,11 +78,36 @@ def build_pdf():
     Build the PDF from the LaTeX report.
     """
 
-    call("make", cwd=BUILD_DIR / "latex", shell=True)
+    execute(["make"], cwd=BUILD_DIR / "latex")
 
     # Move the PDF to the current directory
     pdf_file = BUILD_DIR / f"latex/{make_filename_from_project(config.project)}.pdf"
     pdf_file.rename(DEST_DIR)
+
+
+def generate_pdf_report():
+    """
+    Generate the PDF report.
+    """
+
+    generate_latex_report()
+    build_pdf()
+
+
+def generate_html_report():
+    """
+    Generate an HTML report from the XML files.
+    """
+
+    execute(
+        [
+            "sphinx-build",
+            "-M",
+            "html",
+            str(DOC_DIR),
+            str(BUILD_DIR),
+        ]
+    )
 
 
 def clean_up():
