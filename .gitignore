@@ -181,3 +181,8 @@ temp*
 
 # .DS_Store
 **/.DS_Store
+
+# test document generated files
+backend.xml
+frontend.xml
+*.pdf
