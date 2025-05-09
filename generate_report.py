@@ -129,8 +129,8 @@ def main():
     clean_up()
     run_backend_tests()
     run_frontend_tests()
-    generate_latex_report()
-    build_pdf()
+    generate_html_report()
+    generate_pdf_report()
 
 
 if __name__ == "__main__":
