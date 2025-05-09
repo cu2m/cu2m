@@ -1,0 +1,21 @@
+[project]
+name = "cu2m"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "TEAM A11"}
+]
+readme = "README.md"
+requires-python = ">=3.12,<4"
+dependencies = [
+    "sphinx-test-reports (>=1.2.0,<2.0.0)",
+    "sphinxcontrib-plantuml (>=0.30,<0.31)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+package-mode = false
