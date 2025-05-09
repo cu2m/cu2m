@@ -1,9 +1,10 @@
+################################################################################
 CU^2M Test Report
-===================
+################################################################################
 
 .. toctree::
    :maxdepth: 0
 
-.. test-report:: Backend Test Report
+.. test-report:: Backend Tests
    :file: ../backend.xml
    :id: BACKEND

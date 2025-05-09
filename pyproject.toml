@@ -11,7 +11,8 @@ dependencies = [
     "sphinx-test-reports (>=1.2.0,<2.0.0)",
     "sphinxcontrib-plantuml (>=0.30,<0.31)",
     "sphinx-needs (>=5.1.0,<6.0.0)",
-    "sphinx (==7.2)"
+    "sphinx (==7.2)",
+    "matplotlib (>=3.10.3,<4.0.0)"
 ]
 
 

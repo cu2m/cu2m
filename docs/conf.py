@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.abspath(".."))
 sys.path.insert(0, os.path.abspath("../tests"))
 
 
-project = "CU^2M"
+project = "CU^2M Test Documentation"
 copyright = "2025, TEAM A11"
 author = "TEAM A11"
 
