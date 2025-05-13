@@ -1,6 +1,6 @@
-[submodule "cu2m-frontend"]
-	path = cu2m-frontend
-	url = git@github.com:cwngan/cu2m-frontend.git
-[submodule "cu2m-backend"]
-	path = cu2m-backend
-	url = git@github.com:cwngan/cu2m-backend.git
+[submodule "frontend"]
+	path = frontend
+	url = git@github.com:cu2m/frontend.git
+[submodule "backend"]
+	path = backend
+	url = git@github.com:cu2m/backend.git
